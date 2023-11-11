@@ -8,6 +8,5 @@ describe('Register Test', () => {
         cy.get('[type="checkbox"]').check({ force: true }).should('be.checked');
         cy.get('[type="password"]').should('have.value', 'fyguy24Dhhj!');
         cy.contains(' Register ').click();
-        // cy.xpath("//input[@id='input-name']").clear().type('Vitaliia Palamarchuk');
     });
 });
