@@ -10,13 +10,16 @@ describe('New Row in the Table Test', () => {
         cy.get('[placeholder="E-mail"]').last().clear().type('danielblack@gmail.com');
         cy.get('[placeholder="Age"]').last().clear().type('27');
         cy.get('.nb-checkmark').click();
-        
+
         const expectedArray = ['250', 'Daniel', 'Black', '@Daniel', 'danielblack@gmail.com', '27'];
-        cy.get('.ng-star-inserted').should('exist').invoke('text').then((text) => {
-            expectedArray.forEach((item) => {
-              expect(text).to.include(item);
-            });
+
+        cy.get('[ng-reflect-klass="ng2-smart-row"]:first()').find('[ng-reflect-ng-switch]').each((text) => {
+            expect(expectedArray).to.include(text.text());
         });
+
+        expectedArray.forEach((el, index) => {
+            cy.get('[ng-reflect-klass="ng2-smart-row"]:first()').find('[ng-reflect-ng-switch]').eq(index).invoke("text").should("equal", el)
+        })
     });
 });
 
