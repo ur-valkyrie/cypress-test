@@ -1,7 +1,6 @@
 describe('New Elements in a row Test', () => {
     it('Adding new elements in a row', () => {
         let elems = [];
-
         cy.visit('/pages/tables/smart-table');
         cy.get('[placeholder="ID"]').type(43);
         cy.wait(1000);
